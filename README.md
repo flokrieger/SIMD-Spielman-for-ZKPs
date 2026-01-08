@@ -52,7 +52,7 @@ $ sudo apt install build-essential git cmake libboost-all-dev python3
 **Step 2:** Then, clone this git repository via:
 ```shell
 $ cd /some/target/folder
-$ git clone git@github.com:flokrieger/SIMD-Spielman-for-ZKPs.git
+$ git clone https://github.com/flokrieger/SIMD-Spielman-for-ZKPs.git
 $ cd SIMD-Spielman-for-ZKPs
 ```
 
