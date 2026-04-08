@@ -20,6 +20,7 @@ import subprocess, time
 build_folder = "./build/"
 
 def execute(program,rep,base_core):
+  print("Executing:", program[2:], "...")
   try:
       result = subprocess.Popen(
           [program, str(rep), str(base_core)],

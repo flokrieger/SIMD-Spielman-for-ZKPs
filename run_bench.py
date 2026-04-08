@@ -15,6 +15,7 @@
 import subprocess
 
 def execute(program, repetitions):
+  print("Executing:", program.split("/")[2], "...")
   try:
       result = subprocess.run([program, str(repetitions)], check=True, capture_output=True, text=True)
   except subprocess.CalledProcessError as e:

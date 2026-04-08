@@ -15,6 +15,7 @@ import subprocess
 build_folder = "./build/"
 
 def execute(program):
+  print("Executing:", program[2:], "...")
   try:
     result = subprocess.run([program, ], check=True, capture_output=True, cwd=build_folder)
   except subprocess.CalledProcessError as e:
@@ -59,7 +60,7 @@ if __name__ == "__main__":
       rv |= execute("./orion_spielman_extension_test_N"+str(logN)+"_T"+str(threads))
 
   if rv == 0:
-    print("All tests successful!")
+    print("\nAll tests successful!")
   else:
     print("ERROR!")
     exit(-1)
