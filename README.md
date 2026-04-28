@@ -76,8 +76,13 @@ The compilation step above generated test programs to ensure the functional corr
 $ cd .. # navigate to repo's root folder
 $ python3 run_tests.py
 ```
-This will take about 20 minutes. If all tests pass, the output will be:
+This script takes about 20 minutes on our EPYC CPU. However, it might take significantly longer on other platforms (> 10 hours). To see the testing progress, the current executable name is printed. If all tests pass, the final output will be:
 ```
+Executing: mersenne_test ...
+Executing: montgomery_test ...
+...
+Executing: orion_spielman_extension_test_N16_T16 ...
+
 All tests successful!
 ```
 
@@ -102,7 +107,7 @@ To execute a specific Spielman test, run the executable according to the targete
 $ ./brakedown_spielman_montgomery_test_N16 # Spielman encoding of Brakedown matrix with Montgomery field and N=2^16 (single-threaded)
 $ ./orion_spielman_extension_test_N16_T4 # Spielman encoding of Orion matrix with extension field and N=2^16 (4 threads)
 ``` 
-If all tests pass, the output will be:
+If all tests pass, the output will be similar as below. Note that `lgN` and `k` might be different, according to the executed configuration:
 ```
 GraphGen Done lgN=16 k=256
 Spielman test for lgN: 16 successful!
@@ -122,6 +127,7 @@ The `run_bench.py` script averages the latency of at least 120 Spielman encoding
 
 Note that small latency variations may occur due to CPU-specific deviations and background workload. Moreover, we noticed a higher latency variation in Xeon and i7 CPUs than on EPYC. To lower this latency variation, we recommend minimizing the background tasks and avoiding interferences (e.g., via rebooting the system) before starting the benchmark. 
 ```
+<< Progress info is printed here >>
 === Average encoding latency Brakedown matrix, Montgomery field, 1 thread (Table 2) ===
   logN = 16 :       1.46 ms
   logN = 18 :       5.95 ms
